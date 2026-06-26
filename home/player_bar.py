@@ -2,8 +2,8 @@ import customtkinter as ctk
 
 class PlayerBar:
     def __init__(self, parent):
-        self.frame = ctk.CTkFrame(master=parent, height=80, fg_color="#0d0d0d")
-        self.frame.grid(row=1, column=0, columnspan=3, sticky="nsew", padx = 5, pady = (0,5))
+        self.frame = ctk.CTkFrame(master=parent, height=75, fg_color="#0d0d0d")
+        self.frame.grid(row=2, column=0, columnspan=3, sticky="nsew", padx = 5, pady = (0,5))
         self.frame.grid_propagate(False)
         self.frame.grid_columnconfigure(1, weight=1)
 
@@ -11,7 +11,7 @@ class PlayerBar:
 
     def _build(self):
         left_frame = ctk.CTkFrame(master=self.frame, fg_color="transparent")
-        left_frame.grid(row=0, column=0, sticky="w", padx=8, pady=10)
+        left_frame.grid(row=0, column=0, sticky="w", padx=8, pady=(1,10))
 
         album_art = ctk.CTkLabel(
             master=left_frame,

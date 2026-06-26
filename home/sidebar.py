@@ -4,15 +4,15 @@ class Sidebar:
     def __init__(self, parent):
         # sidebar frame
         self.frame = ctk.CTkFrame(master=parent, width=150, fg_color = "#1a1a2e")
-        self.frame.grid(row=0, column=0, sticky="nsew", padx =(5,0), pady= 5)
+        self.frame.grid(row=1, column=0, sticky="nsew", padx =(5,0), pady= 5)
         self.frame.grid_propagate(False)
 
         self._build()
     
     def _build(self):
         #App title
-        app_label = ctk.CTkLabel(master= self.frame , text = "App", font= ctk.CTkFont(size= 18, weight="bold"))
-        app_label.pack(pady = (20 ,30), padx =20, anchor= "w")
+        app_label = ctk.CTkLabel(master= self.frame , text = "Your Library", font= ctk.CTkFont(size= 18, weight="bold"))
+        app_label.pack(pady = (30 ,20), padx =20, anchor= "w")
 
         #nav buttons
 
@@ -25,14 +25,14 @@ class Sidebar:
                 anchor = "w",
                 fg_color="transparent",
                 hover_color ="#2a2a4a",
-                font=ctk.CTkFont(size = 13)
+                font=ctk.CTkFont(family = "SFNS Display Bold" ,size = 16)
             )
 
-            btn.pack(fill="x", pady = 2, padx =10)
+            btn.pack(fill="x", pady = 2, padx =(20,10))
         
         #personal section label
 
-        personal_label = ctk.CTkLabel(master = self.frame, text ="Personal", font= ctk.CTkFont(size = 11), text_color="gray")
+        personal_label = ctk.CTkLabel(master = self.frame, text ="Personal", font= ctk.CTkFont(family="SFNS Display Bold", size = 18))
         personal_label.pack(pady = (20, 5), padx = 20, anchor = "w")
 
         #personal buttons
@@ -45,9 +45,9 @@ class Sidebar:
                 anchor = "w",
                 fg_color="transparent",
                 hover_color="#2a2a4a",
-                font=ctk.CTkFont(size = 13)
+                font=ctk.CTkFont(family = "SFNS Display Bold" ,size = 16)
             )
-            btn.pack(fill = "x",padx = 10, pady = 2)
+            btn.pack(fill = "x",padx = (20,10), pady = 2)
 
         
         #playlist button at the bottom
@@ -56,7 +56,7 @@ class Sidebar:
                                         anchor = "w",
                                         fg_color="transparent",
                                         hover_color="#2a2a4a",
-                                        font = ctk.CTkFont(size = 13)
+                                        font = ctk.CTkFont(family="SFNS Display Bold",size = 13)
                                         )
-        create_playlist.pack(fill = "x", padx= 10, pady=20, side ="bottom")
+        create_playlist.pack(fill = "x", padx= 10, pady=10, side ="bottom")
 

@@ -4,32 +4,23 @@ from logic.library import SONGS
 class MainArea:
     def __init__(self, parent):
         self.frame = ctk.CTkFrame(parent,fg_color="#16213e")
-        self.frame.grid(row=0, column=1, sticky="nsew", padx=5, pady=5)
+        self.frame.grid(row=1, column=1, sticky="nsew", padx=5, pady=5)
 
         self._build()
 
     def _build(self):
-        # Search bar
-        search_entry = ctk.CTkEntry(
-            self.frame,
-            placeholder_text="Search music",
-            width=300,
-            height=35,
-            corner_radius=20
-        )
-        search_entry.pack(anchor="center", padx = 20, pady= 20)
-
-        # "Popular" title
-        popular_label = ctk.CTkLabel(
-            self.frame,
-            text="Popular",
-            font=ctk.CTkFont(size=20, weight="bold")
-        )
-        popular_label.pack(anchor="w", padx=20, pady=(0, 10))
+        
+        # # "Popular" title
+        # popular_label = ctk.CTkLabel(
+        #     self.frame,
+        #     text="Popular",
+        #     font=ctk.CTkFont(size=20, weight="bold")
+        # )
+        # popular_label.pack(anchor="w", padx=20, pady=(10, 10))
 
         # Scrollable frame for song list
         self.song_list_frame = ctk.CTkScrollableFrame(self.frame, fg_color="transparent")
-        self.song_list_frame.pack(fill="both", expand=True, padx=20, pady=(0, 20))
+        self.song_list_frame.pack(fill="both", expand=True, padx=20, pady=(15, 20))
 
         self._display_songs(SONGS)
 
