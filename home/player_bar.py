@@ -50,14 +50,20 @@ class PlayerBar:
 
         controls_frame = ctk.CTkFrame(master=center_frame, fg_color="transparent")
         controls_frame.pack(pady=(0, 0))
+        
+        previous_btn = CTkImage(Image.open("assets/images/prev.png"), size = (30,26))
+        self.previous_btn = previous_btn
+        
 
         self.previous_btn = ctk.CTkButton(
             master=controls_frame,
-            text="<",
-            width=40,
+            text="",
+            image = self.previous_btn,
+            width=20,
+            height = 20,
             fg_color="transparent",
-            hover_color="#1f2937",
-            font=ctk.CTkFont(size=25)
+            hover_color="#000000",
+            corner_radius=25
         )
         self.previous_btn.pack(side="left", padx=0)
 
@@ -81,12 +87,21 @@ class PlayerBar:
             corner_radius=25
         )
         self.play_btn.pack(side="left", padx=5)
+        
+        #next button
+        next_btn = CTkImage(Image.open ("assets/images/next.png"), size=(30,26))
+        self.next_btn = next_btn
+        
+    
         self.next_btn = ctk.CTkButton(
             master=controls_frame,
-            text=">",
-            width=40,
+            text="",
+            image=self.next_btn,
+            width=20,
+            height=20,
             fg_color="transparent",
-            font=ctk.CTkFont(size=25)
+            hover_color="#000000",
+            corner_radius=25
         )
         self.next_btn.pack(side="left", padx=0)
 
