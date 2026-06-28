@@ -8,7 +8,6 @@ class Song:
     def __repr__(self):
         return f"{self.title} - {self.artist} ({self.genre}, {self.duration})"
 
-
 SONGS = [
     Song("Love song", "Zak Abel", "Pop", "3.23"),
     Song("Kombucha Burps", "Kendrick Lamar", "Hip Hop", "5:36"),
