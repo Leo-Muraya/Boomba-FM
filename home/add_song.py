@@ -33,7 +33,10 @@ class AddSongDialog:
 
         # Song title input
         ctk.CTkLabel(self.frame, text="Song Title", anchor="w").pack(fill="x", padx=40)
-        self.title_entry = ctk.CTkEntry(self.frame, placeholder_text="Enter song title")
+        self.title_entry = ctk.CTkEntry(self.frame, 
+                                        placeholder_text="Enter song title",
+                                        font= ctk.CTkFont(family= "San Fransisco Display Bold", weight = "bold", size = 13)
+                                        )
         self.title_entry.pack(fill="x", padx=40, pady=(5, 15))
 
         # Artist input
