@@ -49,6 +49,6 @@ SONGS = [
          "Kanye West", 
          "Pop", 
          "5.16", 
-         "assets/songs/12.Slow Jamz (Ft. Twista & Jamie Foxx).mp4")
+         "assets/songs/12.Slow Jamz (Ft. Twista & Jamie Foxx).mp3")
 ]
 
