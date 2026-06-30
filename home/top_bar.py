@@ -2,6 +2,7 @@ import customtkinter as ctk
 
 class TopBar:
     def __init__(self, parent):
+        self.on_search = None
         self.frame = ctk.CTkFrame(parent, height=55, fg_color="#000000", corner_radius=0)
         self.frame.grid(row=0, column=0, columnspan=3, sticky="ew", padx=10, pady=(5, 0))
         self.frame.grid_propagate(False)
@@ -51,6 +52,7 @@ class TopBar:
             
         )
         self.search_entry.pack(anchor="center",side = "left", padx=(50,20))
+        self.search_entry.bind("<KeyRelease>", self._on_search)
 
         # Login button on the right
         Register_btn = ctk.CTkButton(
@@ -78,3 +80,8 @@ class TopBar:
             corner_radius=20
         )
         login_btn.pack(side="right", padx=5)
+        
+    def _on_search(self, event):
+     if self.on_search:
+        query = self.search_entry.get()
+        self.on_search(query)

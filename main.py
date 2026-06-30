@@ -78,17 +78,53 @@ def on_previous():
     if player.current_song:
         on_song_selected(player.current_song)
 
+def update_progress():
+    if player.is_playing and player.current_song:
+        position = player.get_position()
+        length = player.song_length
+
+        if length > 0:
+            progress = position / length
+            player_bar.progress_bar.set(progress)
+
+            # Format current time as M:SS
+            current_min = int(position // 60)
+            current_sec = int(position % 60)
+            player_bar.current_time.configure(text=f"{current_min}:{current_sec:02d}")
+
+            # Format total time as M:SS
+            total_min = int(length // 60)
+            total_sec = int(length % 60)
+            player_bar.total_time.configure(text=f"{total_min}:{total_sec:02d}")
+
+            # Auto play next song when current one ends
+            if position >= length - 0.5:
+                on_next()
+
+    # Run this function again after 500ms
+    app.after(500, update_progress)
+
 # ── Connect volume slider ──────────────────────────────
 def on_volume_change(value):
     player.set_volume(value)
+
+# ── Connect seek (progress bar dragging) ───────────────
+def on_seek(percentage):
+    player.seek_to_percentage(percentage)
+
+def on_search(query):
+    main_area.search_songs(query)
 
 # ── Assign buttons ─────────────────────────────────────
 player_bar.play_btn.configure(command=on_play_pause)
 player_bar.next_btn.configure(command=on_next)
 player_bar.previous_btn.configure(command=on_previous)
 player_bar.volume_slider.configure(command=on_volume_change)
+player_bar.on_seek = on_seek
+top_bar.on_search = on_search
 
 # ── Pass song click callback to main area ──────────────
 main_area.set_song_callback(on_song_selected)
 
+update_progress()
 app.mainloop()

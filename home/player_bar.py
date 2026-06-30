@@ -2,9 +2,9 @@ import customtkinter as ctk
 from customtkinter import CTkImage
 from PIL import Image 
 
-
 class PlayerBar:
     def __init__(self, parent):
+        self.on_seek = None 
         self.frame = ctk.CTkFrame(master=parent, height=80, fg_color="#000000")
         self.frame.grid(row=2, column=0, columnspan=3, sticky="nsew", padx = 5, pady = (0,5))
         self.frame.grid_propagate(False)
@@ -13,7 +13,7 @@ class PlayerBar:
         self._build()
 
     def _build(self):
-        left_frame = ctk.CTkFrame(master=self.frame, fg_color="transparent")
+        left_frame = ctk.CTkFrame(master=self.frame, fg_color="transparent",width=170 )
         left_frame.grid(row=0, column=0, sticky="w", padx=8, pady=(1,10))
 
         album_art = ctk.CTkLabel(
@@ -118,15 +118,23 @@ class PlayerBar:
             text_color="gray"
         )
         self.current_time.pack(side="left")
+        
 
-        self.progress_bar = ctk.CTkProgressBar(
-            master=progress_frame,
-            fg_color="#1b2841",
-            progress_color="#2563eb",
-            
-        )
+        self.progress_bar = ctk.CTkSlider(
+            progress_frame,
+             from_=0,
+             to=1,
+             fg_color="#2a2a4a",
+             progress_color="#4a90d9",
+             button_color="#4a90d9",
+             button_hover_color="#357abd",
+             height=12,
+             command=self._on_seek_drag
+            )
         self.progress_bar.pack(side="left", fill="x", expand=True, padx=10)
-        self.progress_bar.set(0.45)
+        self.progress_bar.set(0)
+        
+        
 
         self.total_time = ctk.CTkLabel(
             master=progress_frame,
@@ -153,6 +161,9 @@ class PlayerBar:
         self.volume_slider.pack(side="left")
         self.volume_slider.set(0.7)
 
+    def _on_seek_drag(self, value):
+          if self.on_seek:
+           self.on_seek(value)
 
 
 
