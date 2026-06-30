@@ -5,7 +5,7 @@ from PIL import Image
 
 class PlayerBar:
     def __init__(self, parent):
-        self.frame = ctk.CTkFrame(master=parent, height=85, fg_color="#000000")
+        self.frame = ctk.CTkFrame(master=parent, height=80, fg_color="#000000")
         self.frame.grid(row=2, column=0, columnspan=3, sticky="nsew", padx = 5, pady = (0,5))
         self.frame.grid_propagate(False)
         self.frame.grid_columnconfigure(1, weight=1)
@@ -32,14 +32,16 @@ class PlayerBar:
 
         self.song_title = ctk.CTkLabel(
             master=song_info,
-            text="Drank In My Cup",
-            font=ctk.CTkFont(size=15, weight="bold")
+            text="No Song",
+            font=ctk.CTkFont(size=13, weight="bold"),
+            width=150,
+            anchor="w"
         )
         self.song_title.pack(anchor="w")
 
         self.artist_name = ctk.CTkLabel(
             master=song_info,
-            text="Kirko Bangz",
+            text="No Artist",
             font=ctk.CTkFont(size=13),
             text_color="gray"
         )
@@ -47,6 +49,7 @@ class PlayerBar:
 
         center_frame = ctk.CTkFrame(master=self.frame, fg_color="transparent")
         center_frame.grid(row=0, column=1, sticky="nsew", padx=20, pady=10)
+        center_frame.grid_propagate(False)
 
         controls_frame = ctk.CTkFrame(master=center_frame, fg_color="transparent")
         controls_frame.pack(pady=(0, 0))
@@ -54,7 +57,7 @@ class PlayerBar:
         previous_btn = CTkImage(Image.open("assets/images/prev.png"), size = (30,26))
         self.previous_btn = previous_btn
         
-
+        
         self.previous_btn = ctk.CTkButton(
             master=controls_frame,
             text="",
@@ -69,7 +72,7 @@ class PlayerBar:
 
         # Load icons
         play_icon = CTkImage(Image.open("assets/images/play.png"), size=(35, 35))
-        pause_icon = CTkImage(Image.open("assets/images/pause.png"), size=(45, 45))
+        pause_icon = CTkImage(Image.open("assets/images/pause.png"), size=(35, 35))
 
         # Store icons so we can switch between them later
         self.play_icon = play_icon
@@ -106,7 +109,7 @@ class PlayerBar:
         self.next_btn.pack(side="left", padx=0)
 
         progress_frame = ctk.CTkFrame(master=center_frame, fg_color="transparent", width =150)
-        progress_frame.pack(fill = "x")
+        progress_frame.pack(fill = "x", padx= 50, anchor= "center")
 
         self.current_time = ctk.CTkLabel(
             master=progress_frame,

@@ -5,18 +5,13 @@ class MainArea:
     def __init__(self, parent):
         self.frame = ctk.CTkFrame(parent,fg_color="#16213e")
         self.frame.grid(row=1, column=1, sticky="nsew", padx=5, pady=5)
+        self.on_song_selected = None
 
         self._build()
 
     def _build(self):
         
-        # # "Popular" title
-        # popular_label = ctk.CTkLabel(
-        #     self.frame,
-        #     text="Popular",
-        #     font=ctk.CTkFont(size=20, weight="bold")
-        # )
-        # popular_label.pack(anchor="w", padx=20, pady=(10, 10))
+       
 
         # Scrollable frame for song list
         self.song_list_frame = ctk.CTkScrollableFrame(self.frame, fg_color="transparent")
@@ -61,3 +56,14 @@ class MainArea:
         # Duration
         duration_label = ctk.CTkLabel(row, text=song.duration, font=ctk.CTkFont(size=11), text_color="gray")
         duration_label.pack(side="right", padx=15)
+        
+        # Make row clickable
+        row.bind("<Button-1>", lambda e, s=song: self.on_song_selected(s))
+        for widget in row.winfo_children():
+         widget.bind("<Button-1>", lambda e, s=song: self.on_song_selected(s))
+        
+    def set_song_callback(self, callback):
+       """Store the callback and rebuild song list with it"""
+       self.on_song_selected = callback
+       self._display_songs(SONGS)
+    

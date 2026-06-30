@@ -49,6 +49,20 @@ class Sidebar:
             )
             btn.pack(fill = "x",padx = (20,10), pady = 2)
 
+
+
+        # Add song buttin
+        add_song = ctk.CTkButton(
+            master = self.frame,
+            text = "+ Add a song",
+            anchor="w",
+            fg_color="transparent",
+            hover_color="#2a2a4a",
+            font = ctk.CTkFont(family = "SFNS Display Bold", size = 13)
+         
+        )
+
+        add_song.pack(fill = "x", padx= (5,10), pady=(0,5), side ="bottom")
         
         #playlist button at the bottom
         create_playlist = ctk.CTkButton(master = self.frame, 
@@ -58,5 +72,5 @@ class Sidebar:
                                         hover_color="#2a2a4a",
                                         font = ctk.CTkFont(family="SFNS Display Bold",size = 13)
                                         )
-        create_playlist.pack(fill = "x", padx= 10, pady=10, side ="bottom")
+        create_playlist.pack(fill = "x", padx= (5,10), pady=(0,5), side ="bottom")
 

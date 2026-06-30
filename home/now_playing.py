@@ -33,8 +33,8 @@ class NowPlaying:
         self.song_label = ctk.CTkLabel(
             self.frame,
             text="No song playing",
-            font=ctk.CTkFont(family= "Gill Sans", size=24, weight="bold"),
-            wraplength=200
+            font=ctk.CTkFont(family= "SNFS Display Bold", size=24, weight="bold"),
+            wraplength=250
         )
         self.song_label.pack(anchor = "w",pady=(0, ), padx=(25,15))
 
@@ -42,7 +42,7 @@ class NowPlaying:
         self.artist_label = ctk.CTkLabel(
             self.frame,
             text="Unknown Artist",
-            font=ctk.CTkFont(size=12),
+            font=ctk.CTkFont(family="SNFS Display",size=15, weight = "bold"),
             text_color="gray"
         )
         self.artist_label.pack(pady=(0, 5),padx=(25,15), anchor = "w")
