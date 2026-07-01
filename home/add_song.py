@@ -8,7 +8,13 @@ class AddSongDialog:
         self.file_path = ""
 
         # Frame sits on top of the main area, same grid spot
-        self.frame = ctk.CTkFrame(parent, fg_color="#16213e", corner_radius=12, border_width=1, border_color="#2a2a4a")
+        self.frame = ctk.CTkScrollableFrame(parent, 
+                                            bg_color="transparent",
+                                            fg_color="#000000", 
+                                            corner_radius=25, 
+                                            border_width=1, 
+                                            border_color="#2a2a4a",
+                                            )
 
         self._build()
 
@@ -33,20 +39,25 @@ class AddSongDialog:
 
         # Song title input
         ctk.CTkLabel(self.frame, text="Song Title", anchor="w").pack(fill="x", padx=40)
-        self.title_entry = ctk.CTkEntry(self.frame, 
+        self.title_entry = ctk.CTkEntry(master=self.frame, 
                                         placeholder_text="Enter song title",
                                         font= ctk.CTkFont(family= "San Fransisco Display Bold", weight = "bold", size = 13)
+                                        
                                         )
         self.title_entry.pack(fill="x", padx=40, pady=(5, 15))
 
         # Artist input
         ctk.CTkLabel(self.frame, text="Artist", anchor="w").pack(fill="x", padx=40)
-        self.artist_entry = ctk.CTkEntry(self.frame, placeholder_text="Enter artist name")
+        self.artist_entry = ctk.CTkEntry(master=self.frame, 
+                                         placeholder_text="Enter artist name",
+                                         font= ctk.CTkFont(family= "San Fransisco Display Bold", weight = "bold", size = 13))
         self.artist_entry.pack(fill="x", padx=40, pady=(5, 15))
 
         # Genre input
         ctk.CTkLabel(self.frame, text="Genre", anchor="w").pack(fill="x", padx=40)
-        self.genre_entry = ctk.CTkEntry(self.frame, placeholder_text="Enter genre (e.g. Pop)")
+        self.genre_entry = ctk.CTkEntry(master= self.frame, 
+                                        placeholder_text="Enter genre (e.g. Pop)",
+                                        font= ctk.CTkFont(family= "San Fransisco Display Bold", weight = "bold", size = 13))
         self.genre_entry.pack(fill="x", padx=40, pady=(5, 15))
 
         # File picker button

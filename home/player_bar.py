@@ -146,8 +146,11 @@ class PlayerBar:
 
         right_frame = ctk.CTkFrame(master=self.frame, fg_color="transparent")
         right_frame.grid(row=0, column=2, sticky="e", padx=20, pady=10)
+        
+        speaker_icon = ctk.CTkImage (Image.open("assets/images/speaker.png"), size= (20,20))
+        self.speaker_icon = speaker_icon
 
-        volume_label = ctk.CTkLabel(master=right_frame, text="🔊", font=ctk.CTkFont(size=14))
+        volume_label = ctk.CTkLabel(master=right_frame, text="",image= self.speaker_icon, font=ctk.CTkFont(size=14))
         volume_label.pack(side="left", padx=(0, 8))
 
         self.volume_slider = ctk.CTkSlider(
